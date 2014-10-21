@@ -22,12 +22,12 @@ my @groups = ("dev", "system");
 open my $info, $file or die "Could not open $file: $!";
 
 # Example: G12345,group,randompwd,Last Name,First Name
-while (my $line = <$info>)  {
-	print "G" . $id . ",";
+while (my $line = <$info>) {
+    print "G" . $id . ",";
     print $groups[rand @groups] . ","; # randomly choose a group
     print $pwdchars[rand @pwdchars] for 1..$pwdlength;
-	print "," . $line;
-	$id++;
+    print "," . $line;
+    $id++;
 }
 
 close $info;
