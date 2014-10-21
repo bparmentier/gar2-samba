@@ -25,19 +25,19 @@ do
     FIRSTNAME=$(echo $USER | cut -d ',' -f 5)
 
     # Add user to system
-	useradd -M -g "$GROUP" -c "$LASTNAME $FIRSTNAME" -p $PASSWD $LOGIN
+    useradd -M -g "$GROUP" -c "$LASTNAME $FIRSTNAME" -p $PASSWD $LOGIN
     # Add user to samba
-	(echo $PASSWD; echo $PASSWD) | smbpasswd -as "$LOGIN"
+    (echo $PASSWD; echo $PASSWD) | smbpasswd -as "$LOGIN"
 
     # In case we want to remove all users, uncomment:
-	#pdbedit -x "$LOGIN"
-	#if [ $? != 0 ]
-	#then
-	#	echo "Erreur smbpasswd"
-	#fi
-	#userdel "$LOGIN"
-	#if [ $? != 0 ]
-	#then
-	#	echo "Erreur userdel"
-	#fi
+    #pdbedit -x "$LOGIN"
+    #if [ $? != 0 ]
+    #then
+    #   echo "Erreur smbpasswd"
+    #fi
+    #userdel "$LOGIN"
+    #if [ $? != 0 ]
+    #then
+    #   echo "Erreur userdel"
+    #fi
 done < "$FILE"
