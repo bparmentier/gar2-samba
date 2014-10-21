@@ -1,2 +1,2 @@
-gar2-samba
-==========
+GAR3 (Samba) scripts
+====================
